@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="前言项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,但是又因为之前没有用过,很多东西不明白,所以有本文章用来记录gradle相关 插件在gradle.build中加入如下代码1apply plugin: &amp;apos;java&amp;apos; 表示 使用gradle中的java插件,java插件中有许多丰富的功能 源集java插件定义了两个源集,main和test.main为源代码,会">
+<meta name="description" content="关于gradle构建Java项目的一些东西">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gradle命令">
 <meta property="og:url" content="/2018/12/06/gradle命令/index.html">
 <meta property="og:site_name" content="huzi&#39;s blog">
-<meta property="og:description" content="前言项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,但是又因为之前没有用过,很多东西不明白,所以有本文章用来记录gradle相关 插件在gradle.build中加入如下代码1apply plugin: &amp;apos;java&amp;apos; 表示 使用gradle中的java插件,java插件中有许多丰富的功能 源集java插件定义了两个源集,main和test.main为源代码,会">
+<meta property="og:description" content="关于gradle构建Java项目的一些东西">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-12T06:51:20.388Z">
+<meta property="og:updated_time" content="2018-12-12T08:41:37.660Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle命令">
-<meta name="twitter:description" content="前言项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,但是又因为之前没有用过,很多东西不明白,所以有本文章用来记录gradle相关 插件在gradle.build中加入如下代码1apply plugin: &amp;apos;java&amp;apos; 表示 使用gradle中的java插件,java插件中有许多丰富的功能 源集java插件定义了两个源集,main和test.main为源代码,会">
+<meta name="twitter:description" content="关于gradle构建Java项目的一些东西">
 
 
 
@@ -97,7 +97,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -283,7 +283,42 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
 
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  关于gradle构建Java项目的一些东西
+              </div>
           
 
         </div>
@@ -299,10 +334,10 @@
       
 
       
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,但是又因为之前没有用过,很多东西不明白,所以有本文章用来记录gradle相关</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,因为之前没有用过,很多东西不熟悉,所以有本文章用来记录gradle相关</p>
 <h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>在gradle.build中加入如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;java&apos;</span><br></pre></td></tr></table></figure></p>
 <p>表示 使用gradle中的java插件,java插件中有许多丰富的功能</p>
-<h4 id="源集"><a href="#源集" class="headerlink" title="源集"></a>源集</h4><p>java插件定义了两个源集,main和test.main为源代码,会被打成jar包,test为单元测试代码<br>两个源集在项目中可以用 sourceset来配置 例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sourceset&#123;</span><br><span class="line">	main&#123;</span><br><span class="line">		srcDir()	</span><br><span class="line">	&#125;</span><br><span class="line">	test&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="源集"><a href="#源集" class="headerlink" title="源集"></a>源集</h4><p>java插件定义了两个源集,main和test.main为源代码,会被打成jar包,test为单元测试代码<br>两个源集在项目中可以用 sourceset来配置 例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sourceset&#123;</span><br><span class="line">	main&#123;</span><br><span class="line">		srcDir()	</span><br><span class="line">	&#125;</span><br><span class="line">	test&#123;</span><br><span class="line">		srcDir()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -315,6 +350,20 @@
     
 
     
+	
+	<div>
+	
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            -------------本文结束
+            <i class="fa fa-paw"></i>
+            感谢您的阅读-------------
+        </div>
+    
+</div>
+	
+	</div>
 
     <footer class="post-footer">
       
@@ -336,10 +385,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/12/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -416,7 +461,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -500,7 +545,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
