@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="关于gradle构建Java项目的一些东西">
+<meta name="description" content="记录docker的一些命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gradle命令">
-<meta property="og:url" content="/2018/12/06/gradle命令/index.html">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="/2018/12/13/docker/index.html">
 <meta property="og:site_name" content="huzi&#39;s blog">
-<meta property="og:description" content="关于gradle构建Java项目的一些东西">
+<meta property="og:description" content="记录docker的一些命令">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-12-14T01:59:42.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gradle命令">
-<meta name="twitter:description" content="关于gradle构建Java项目的一些东西">
+<meta name="twitter:title" content="docker">
+<meta name="twitter:description" content="记录docker的一些命令">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="/2018/12/06/gradle命令/">
+  <link rel="canonical" href="/2018/12/13/docker/">
 
 
 
 
 
-  <title>gradle命令 | huzi's blog</title>
+  <title>docker | huzi's blog</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2018/12/06/gradle命令/">
+    <link itemprop="mainEntityOfPage" href="/2018/12/13/docker/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="huzi">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">gradle命令</h1>
+          <h1 class="post-title" itemprop="name headline">docker</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-06T06:17:24+00:00">
-                2018-12-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-13T01:37:01+00:00">
+                2018-12-13
               </time>
             
 
@@ -317,7 +317,7 @@
 
           
               <div class="post-description">
-                  关于gradle构建Java项目的一些东西
+                  记录docker的一些命令
               </div>
           
 
@@ -334,10 +334,11 @@
       
 
       
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,因为之前没有用过,很多东西不熟悉,所以有本文章用来记录gradle相关</p>
-<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>在gradle.build中加入如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;java&apos;</span><br></pre></td></tr></table></figure></p>
-<p>表示 使用gradle中的java插件,java插件中有许多丰富的功能</p>
-<h4 id="源集"><a href="#源集" class="headerlink" title="源集"></a>源集</h4><p>java插件定义了两个源集,main和test.main为源代码,会被打成jar包,test为单元测试代码<br>两个源集在项目中可以用 sourceset来配置 例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sourceset&#123;</span><br><span class="line">	main&#123;</span><br><span class="line">		srcDir()	</span><br><span class="line">	&#125;</span><br><span class="line">	test&#123;</span><br><span class="line">		srcDir()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h3><p>以CentOs7为例 下面命令root权限 没权限自觉加sudo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查询本机的docker版本</span></span><br><span class="line">$ docker -v</span><br><span class="line">Docker version 18.09.0 build 4d60bd4</span><br><span class="line"><span class="comment">#卸载已安装的 docker </span></span><br><span class="line">$ yum list installed | grep docker</span><br><span class="line">containerd.io.x86_64    1.2.0-3.el7       @docker-ce-edge</span><br><span class="line">docker-ce.x86_64        3:18.09.0-3.el7   @docker-ce-edge</span><br><span class="line">docker-ce-cli.x86_64    1:18.09.0-3.el7   @docker-ce-edge</span><br><span class="line">$ yum remove containerd.io.x86_64</span><br><span class="line"><span class="comment">#安装最新版docker</span></span><br><span class="line">$ yum install docker-ce last</span><br><span class="line">$ docker -v</span><br><span class="line">Docker version 18.09.0,build 4d60db4</span><br></pre></td></tr></table></figure></p>
+<h3 id="docker-常用的命令"><a href="#docker-常用的命令" class="headerlink" title="docker 常用的命令"></a>docker 常用的命令</h3><p>docker 服务相关<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看docker状态</span></span><br><span class="line">$ systemctl stauts docker</span><br><span class="line"><span class="comment"># 启动docker</span></span><br><span class="line">$ systemctl start docker</span><br><span class="line"><span class="comment"># 停止docker</span></span><br><span class="line">$ systemctl stop docker</span><br><span class="line"><span class="comment"># 将docker加入开机启动项</span></span><br><span class="line">$ systemctl <span class="built_in">enable</span> docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询所有的容器</span></span><br><span class="line">$ docker ps -a -s</span><br></pre></td></tr></table></figure></p>
+<p>docker镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取镜像 以Redis为例 方法一  冒号后面为版本号</span></span><br><span class="line">$ docker pull redis:latest</span><br><span class="line"><span class="comment"># 方法二 dockerfile 以后使用后测试</span></span><br></pre></td></tr></table></figure></p>
+<p>docker容器生命周期<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动一个新的容器  </span></span><br><span class="line">$ docker run -d -p 6379:6379 --name myredis redis:latest redis-server --appendonly yes</span><br><span class="line">$ docker ps</span><br><span class="line">$ docker <span class="built_in">exec</span> -it &lt;容器ID&gt; /bin/bash</span><br><span class="line">$ redis-cli</span><br><span class="line">127.0.0.1:6379&gt;ping</span><br><span class="line">PONG</span><br></pre></td></tr></table></figure></p>
+<p>-d 后台模式 不写代表为前台模式<br>-it 其实是-i -t 组成 有一个伪终端用来访问容器<br>–name 重命名 后面my_ubuntu0代表别名<br>ubuntu 镜像名称<br>/bin/bash  容器执行的命令</p>
 
       
     </div>
@@ -376,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/03/Redis学习-1-1/" rel="next" title="Redis学习(1)">
-                <i class="fa fa-chevron-left"></i> Redis学习(1)
+              <a href="/2018/12/06/gradle命令/" rel="next" title="gradle命令">
+                <i class="fa fa-chevron-left"></i> gradle命令
               </a>
             
           </div>
@@ -385,10 +386,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/13/docker/" rel="prev" title="docker">
-                docker <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -511,7 +508,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件"><span class="nav-number">2.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源集"><span class="nav-number">3.</span> <span class="nav-text">源集</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker安装"><span class="nav-number">1.</span> <span class="nav-text">docker安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-常用的命令"><span class="nav-number">2.</span> <span class="nav-text">docker 常用的命令</span></a></li></ol></div>
             
 
           </div>
