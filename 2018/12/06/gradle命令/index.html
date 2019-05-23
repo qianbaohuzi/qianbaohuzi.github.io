@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="huzi&#39;s blog">
 <meta property="og:description" content="关于gradle构建Java项目的一些东西">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-21T11:15:06.404Z">
+<meta property="og:updated_time" content="2019-05-23T13:44:52.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gradle命令">
 <meta name="twitter:description" content="关于gradle构建Java项目的一些东西">
@@ -137,7 +137,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -147,7 +147,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -227,20 +227,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="/2018/12/06/gradle命令/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="huzi">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="huzi's blog">
     </span>
 
@@ -334,10 +334,17 @@
       
 
       
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,因为之前没有用过,很多东西不熟悉,所以有本文章用来记录gradle相关</p>
-<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>在gradle.build中加入如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;java&apos;</span><br></pre></td></tr></table></figure></p>
-<p>表示 使用gradle中的java插件,java插件中有许多丰富的功能</p>
-<h4 id="源集"><a href="#源集" class="headerlink" title="源集"></a>源集</h4><p>java插件定义了两个源集,main和test.main为源代码,会被打成jar包,test为单元测试代码<br>两个源集在项目中可以用 sourceset来配置 例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sourceset&#123;</span><br><span class="line">	main&#123;</span><br><span class="line">		srcDir()	</span><br><span class="line">	&#125;</span><br><span class="line">	test&#123;</span><br><span class="line">		srcDir()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>项目中一直有用到gradle来构建项目,使用了以后,发现极为好用,因为之前没有用过,很多东西不熟悉,所以有本文章用来记录gradle相关知识</p>
+<h4 id="projects和tasks"><a href="#projects和tasks" class="headerlink" title="projects和tasks"></a>projects和tasks</h4><p>一个project就是一个应用,可以是一个jar包或一个web应用.如果是多模块项目,则每个模块都会打包一个jar,每个模块都是一个project.<br>一个project本质上就是一组task的集合,每一个task就是可执行的最小的单元,例如编译源码(compileJava),编译测试类(compileTestJava).<br>如何构建一个自己的task<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">task hello &#123;</span><br><span class="line">	println <span class="string">'hello world'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p><strong>插件在gradle中是非常重要的一部分,也是我们用来快速构建项目的重要工具下面就来讲讲如何导入需要用到的插件,下面主要以java插件为主</strong><br>在gradle.build中加入如下代码<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">	id <span class="string">'java'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>表示 使用gradle中的java插件,在这里推荐使用第二种方法.第二种写法的完整版写法,以springboot 2.1.5RELEASE版本插件为例:<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">	id <span class="string">'org.springframework.boot'</span> version <span class="string">'2.1.5.RELEASE'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就导入了springboot相关的插件,我们在build项目的时候就可以使用相关的task了,例如 bootJar</p>
+<h4 id="java插件"><a href="#java插件" class="headerlink" title="java插件"></a>java插件</h4><p>按照上面的步骤导入了Java插件，下面我们就要了解Java插件如何帮我们快速构建项目</p>
+<h6 id="源集"><a href="#源集" class="headerlink" title="源集"></a>源集</h6><p>java插件定义了两个源集,main和test.main为源代码,会被打成jar包,test为单元测试代码<br>两个源集在项目中可以用 sourceset来配置 例如<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sourceset&#123;</span><br><span class="line">	main&#123;</span><br><span class="line">		srcDir()	</span><br><span class="line">	&#125;</span><br><span class="line">	test&#123;</span><br><span class="line">		srcDir()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="buildscript"><a href="#buildscript" class="headerlink" title="buildscript"></a>buildscript</h4><p>经常会在gradle文件中见到如下buildscript代码片段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext &#123;</span><br><span class="line">        springbootVersion = &apos;2.1.4.RELEASE&apos;</span><br><span class="line">        dependencymanagementPulginVersion = &apos;0.6.0.RELEASE&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        //spring提供的插件的仓库地址</span><br><span class="line">        maven &#123;</span><br><span class="line">            url &apos;https://repo.spring.io/libs-milestone&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">		//使用springboot提供的插件</span><br><span class="line">        classpath &quot;org.springframework.boot:spring-boot-gradle-plugin:$&#123;springbootVersion&#125;&quot;</span><br><span class="line">        classpath &quot;io.spring.gradle:dependency-management-plugin:$&#123;dependencymanagementPulginVersion&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>buildscript代码块中写入内容是gradle脚本自身需要使用的资源。build.gradle文档中的普通的代码是build项目的时候需要的依赖，而buildscript里面就是执行build.gradle时需要依赖的资源,包括依赖项、第三方插件、maven仓库等。<br>build脚本执行的时候会优先执行buildscript代码块中的内容<br>以之前讲过的导入springboot插件为例,就很明白看懂了<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">	repositories &#123;</span><br><span class="line">		maven &#123;</span><br><span class="line">			url <span class="string">'https://plugins.gradle.org/m2/'</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	dependencies &#123;</span><br><span class="line">		classpath <span class="string">"org.springframework.boot:spring-boot-gradle-plugin:2.1.5.RELEASE"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">apply <span class="string">plugin :</span> <span class="string">'org.springframework.boot'</span></span><br></pre></td></tr></table></figure></p>
+<p>并且上面的这端代码等效于<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">	id <span class="string">'org.springframework.boot'</span> version <span class="string">'2.1.5.RELEASE'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -452,7 +459,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">huzi</p>
               <p class="site-description motion-element" itemprop="description">随便瞎写写</p>
@@ -465,7 +472,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -511,7 +518,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件"><span class="nav-number">2.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源集"><span class="nav-number">3.</span> <span class="nav-text">源集</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#projects和tasks"><span class="nav-number">2.</span> <span class="nav-text">projects和tasks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件"><span class="nav-number">3.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java插件"><span class="nav-number">4.</span> <span class="nav-text">java插件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#源集"><span class="nav-number">4.0.1.</span> <span class="nav-text">源集</span></a></li></ol></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#buildscript"><span class="nav-number">5.</span> <span class="nav-text">buildscript</span></a></li></div>
             
 
           </div>
@@ -531,7 +538,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
