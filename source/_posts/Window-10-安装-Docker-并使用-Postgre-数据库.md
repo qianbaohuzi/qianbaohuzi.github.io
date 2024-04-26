@@ -6,7 +6,7 @@ tags:
 - wsl2
 - Docker
 ---
-### Windows 10 开启 wsl 2 并安装 Ubuntu 发行版
+### 开启 wsl 2 并安装 Ubuntu 发行版
 
 - 查看 windows 10 系统信息, 使用 `cmd` 或 `PowerShell` 执行命令 `systeminfo`
 - `OS Version` 大于或等于 `19041 `，则可以使用 wsl2 安装 Docker , 如果小于该版本,可以考虑升级系统
