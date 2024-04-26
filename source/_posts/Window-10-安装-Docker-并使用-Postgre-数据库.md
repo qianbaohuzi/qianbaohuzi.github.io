@@ -1,7 +1,10 @@
 ---
 title: Window 10 安装 Docker 并使用 Postgre 数据库
 date: 2024-04-17 11:03:29
-tags:
+tags: 
+- Windows
+- wsl2
+- Docker
 ---
 ### Windows 10 开启 wsl 2 并安装 Ubuntu 发行版
 

@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Huzi's blog
+title: Liam's blog
 subtitle: ''
-description: ''
-keywords:
-author: huzi
-language: en
+description: '不会因为虚度年华而悔恨，也不会因为碌碌无为而羞耻'
+keywords: 'Java,Linux,编程'
+author: liam
+language: zh-CN
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://qianbaohuzi.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -103,3 +103,10 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# configuration of searchdb
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html

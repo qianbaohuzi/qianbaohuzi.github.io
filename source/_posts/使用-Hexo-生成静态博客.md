@@ -1,7 +1,8 @@
 ---
 title: 使用 Hexo 生成静态博客
 date: 2024-04-15 11:07:26
-tags:
+tags: 
+- hexo
 ---
 #### 起因
 平时折腾过很多东西,但是时间长了都忘记了,每次用的时候都还需要再次去查资料,所以就想用博客记录一下自己平时折腾的东西
@@ -24,3 +25,23 @@ tags:
 #### GitHub Pages
 
 按照 [Hexo 的 GitHub Pages 托管文档](https://hexo.io/zh-cn/docs/github-pages) 将静态博客托管到 `GitHub Pages`
+
+#### 修改主题
+
+ Hexo 拥有很多优秀的主题，我在这里选择了 [Next](https://theme-next.js.org/)
+
+###### 使用 npm 方式安装
+```
+cd hexo-site
+npm install hexo-theme-next
+```
+###### 使用 git 方式安装 
+```
+cd hexo-site
+git clone https://github.com/next-theme/hexo-theme-next themes/next
+```
+##### 修改配置
+修改 hexo-site 中的 _config.yml
+``` 
+theme: next 
+```

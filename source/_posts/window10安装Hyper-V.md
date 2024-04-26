@@ -1,7 +1,9 @@
 ---
 title: Window10 安装 Hyper-V
 date: 2024-04-12 14:05:32
-tags:
+tags: 
+- Windows
+- Hyper-V
 ---
 
 ### 环境
