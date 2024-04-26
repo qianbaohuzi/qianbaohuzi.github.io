@@ -12,14 +12,14 @@ tags:
 
 > 选择 Hexo 是发现可以满足自己基本的要求
 
-查询 `Hexo` 的[官方文档](https://hexo.io/zh-cn/docs/),使用命令
-` npn install hexo-cli -g ` 将 `hexo-cli` 安装到本地
-> 需要安装 `nodejs` 和 `npm` ，在 window 中使用 `scoop` 进行安装管理
+查询 `Hexo` 的[官方文档](https://hexo.io/zh-cn/docs/),使用命令(二选一)
+- ` npm install hexo-cli -g ` 将 `hexo-cli` 安装到本地
+- ` npm install hexo -g` 将 `hexo` 安装到本地
 
 #### 常用命令
 
-- `npx hexo g` 生成静态文件
-- `npx hexo server` 启动本地服务器
+- `npx hexo g` 或 `hexo g` 生成静态文件
+- `npx hexo server` 或 `hexo s` 启动本地服务器
 
 #### GitHub Pages
 
